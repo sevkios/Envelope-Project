@@ -1,0 +1,132 @@
+body {
+  background-color: #FFC5D3;
+  font-family: 'Cookie Monster', cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+#envelope {
+  position: relative;
+  width: 200px;
+  height: 120px;
+  background-color: #a94064;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Envelope decorations */
+#envelope::before {
+  content: "‪‪❤︎‬";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  color: #FF9999;
+  pointer-events: none;
+}
+
+#envelope::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.05),
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+#envelope.open {
+  width: 320px;
+  height: 220px;
+  background-color: #a94064;
+}
+
+#letter {
+  background-color: white;
+  color: black;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: center;
+  line-height: 1.5;
+  font-size: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+#envelope.open #letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade at bottom of letter - REMOVED */
+/*
+#letter::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,1));
+  pointer-events: none;
+}
+*/
+
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #FF9999;
+  transform: rotate(45deg);
+  animation: floatUp 6s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: inherit;
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
+  100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+}
